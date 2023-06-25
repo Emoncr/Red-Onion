@@ -1,0 +1,18 @@
+.bg{
+    background-image: url('../../images/bannerbackground.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 110% 100%;
+    padding: 200px 0;
+    overflow: hidden;
+}
+.hero h1{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+}
+
+.hero img{
+    width: 40%;
+    margin: 0 auto;
+}

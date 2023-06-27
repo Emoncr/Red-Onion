@@ -12,7 +12,6 @@
 .card:hover{
     box-shadow: 4px 4px 20px #e0e0e088;
     transform:scale(1.1);
-    
 }
 .card-body{
     padding: 0;
@@ -32,10 +31,12 @@
 }
 .card .food_price{
     font-weight: 700;
+    color: #000 ;
 }
 .card img{
     margin: 0 auto;
     max-width: 40%;
+
 }
 
 @media only screen and (max-width: 767px){

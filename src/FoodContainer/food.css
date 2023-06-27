@@ -26,6 +26,10 @@
     margin-right: auto;
 }
 
+.categori_btn.active{
+    color: red;
+    border-bottom: 1px solid red;
+}
 @media only screen and (max-width: 767px){
     .categori-row{
         max-width: 300px;

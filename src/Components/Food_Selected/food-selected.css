@@ -1,0 +1,74 @@
+.selected_food_container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.food_name{
+    font-size: 4rem;
+    font-weight: 900;
+    color: #222;
+}
+.food_description{
+    font-size: 20px;
+    color: #777;
+    font-weight: 500;
+    max-width: 400px;
+}
+.food_price{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.inner_quantity{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid rgba(128, 128, 128, 0.555);
+    padding:2px 22px;
+    border-radius: 50px;
+}
+.product_quantity{
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+    color: #666;
+    padding: 8px 10px;
+
+}
+.quantity_btn{
+    background: transparent;
+    border: none;
+    color:gray;
+    font-size: 16px;
+}
+.plus_btn{
+    color: rgba(255, 0, 0, 0.733);
+}
+.selected_food_container .image_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.selected_food_container .image_container img{
+max-width: 550px;
+margin: 0 auto;
+}
+.cart_btn{
+    background: rgba(255, 0, 0, 0.733);
+    border: 0;
+    padding:12px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 50px;
+    transition: .3s ease-in-out;
+}
+.cart_btn:hover{
+    background: rgba(255, 0, 0, 0.918);
+}
+.cart_btn svg{
+    margin-right: 2px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './food.css';
-import Data from '../FakeData/FakeData';
+import Data from '../../FakeData/FakeData';
 import FoodItem from '../FoodItem/FoodItem';
 
 const Food = () => {
@@ -39,7 +39,6 @@ const Food = () => {
     const selectedFoodTime = data.filter((selectFood) => selectFood.category === e.target.value);
     setFoodTime(selectedFoodTime);
     setActiveButton(e.target.value)
-
   };
 
   return (
@@ -66,7 +65,7 @@ const Food = () => {
       </div>
       <div className="inner_section card_container mt-4">
         <div className="row card_item_row">
-          {foodTime && foodTime.map((foodData) => <FoodItem key={foodData.id} foodItem={foodData} />)}
+          {foodTime && foodTime.map((foodData) => <FoodItem key={foodData.food_id} foodItem={foodData} />)}
         </div>
       </div>
     </section>

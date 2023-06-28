@@ -1,15 +1,22 @@
+import { createContext, useState } from 'react'
 import './App.css'
-import Hero from './FakeData/Hero/Hero'
-import Food from './FoodContainer/Food'
-import Header from './Header/Header'
+import Header from './Components/Header/Header'
+import FoodDetails from './Components/FoodDetails/FoodDetails'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './Components/Home/Home'
+
 
 function App() {
+
   return (
-    <>
-    <Header/>
-    <Hero/>
-    <Food/>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path=':id' element={<FoodDetails/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

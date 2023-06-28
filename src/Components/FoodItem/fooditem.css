@@ -3,14 +3,14 @@
     margin-top: 40px !important;
 }
 .card{
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
     transition: .2s ease-in;
     cursor: pointer;
     border-radius: 0px !important;  
 }
 .card:hover{
-    box-shadow: 4px 4px 20px #e0e0e088;
+    box-shadow: 4px 4px 20px rgba(161, 88, 88, 0.281);
     transform:scale(1.1);
 }
 .card-body{
@@ -22,6 +22,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-align: center;
+    color: #222 !important;
 }
 .card p{
     text-align: center;

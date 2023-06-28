@@ -5,6 +5,11 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'KoHo', sans-serif;
+  text-decoration: none;
+}
+a{
+  color: none;
+  text-decoration: none;
 }
 section{
   padding-left: 24px !important;

@@ -3,11 +3,13 @@ import './food.css';
 import Data from '../../FakeData/FakeData';
 import FoodItem from '../FoodItem/FoodItem';
 
-const Food = () => {
+const Food = ({ dynamicCat }) => {
   const [data, setData] = useState(Data);
   const [categoris, setCategoris] = useState([]);
   const [foodTime, setFoodTime] = useState();
   const [activeButton, setActiveButton] = useState('');
+
+
 
   const getCategory = (data, property) => {
     let catValue = data.map((cat) => cat[property]);

@@ -6,16 +6,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/Home/Home'
 
 
+export const cartContext = createContext(); 
+
 function App() {
+
+  const [cart, setCart] = useState([])
+
 
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path=':id' element={<FoodDetails/>}/>
-      </Routes>
+      <cartContext.Provider value={[cart, setCart]}>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path=':id' element={<FoodDetails />} />
+        </Routes>
+      </cartContext.Provider>
     </BrowserRouter>
   )
 }

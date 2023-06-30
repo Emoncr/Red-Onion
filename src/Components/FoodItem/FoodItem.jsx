@@ -8,7 +8,7 @@ const FoodItem = ({ foodItem }) => {
 
     return (
         <div className="col-4 mt-4 mx-auto card_col ">
-            <Link to={food_id}>
+            <Link to={food_id} replace={true} >
                 <div className="card">
                     <img loading="lazy" className="card-img-top" src={photo_url} alt="Card image cap" />
                     <div className="card-body">

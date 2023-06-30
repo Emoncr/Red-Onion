@@ -1,5 +1,5 @@
 .selected_food_container{
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -69,6 +69,38 @@ margin: 0 auto;
 .cart_btn:hover{
     background: rgba(255, 0, 0, 0.918);
 }
+
 .cart_btn svg{
     margin-right: 2px;
+}
+
+@media only screen and (max-width: 767px){
+    .selected_food_container .image_container img{
+        max-width: 300px;
+        margin: 0 auto;
+        }
+    .selected_food_container{
+        flex-direction: column-reverse;
+    }
+    .food_name{
+        font-size: 3rem;
+    }
+    .food_description{
+        font-size: 18px;
+    }
+    .food_price{
+        font-size: 1.2rem;
+    }
+    .food_price{
+        margin-bottom: 0;
+
+    }
+    .food_info{
+        display: flex;
+        align-items: center;
+    }
+    .cart_btn{
+        width: 100% ;
+        margin-top: 40px !important;
+    }
 }

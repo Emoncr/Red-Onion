@@ -4,6 +4,7 @@ import Header from './Components/Header/Header'
 import FoodDetails from './Components/FoodDetails/FoodDetails'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/Home/Home'
+import Cart from './Components/Cart/Cart'
 
 
 export const cartContext = createContext(); 
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path=':id' element={<FoodDetails />} />
+          <Route path='/cart' element={<Cart/>} />
         </Routes>
       </cartContext.Provider>
     </BrowserRouter>

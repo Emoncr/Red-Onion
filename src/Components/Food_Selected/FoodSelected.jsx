@@ -11,6 +11,7 @@ const FoodSelected = ({ selectFood }) => {
     const [cart, setCart] = useContext(cartContext)
     const [orderQuantity, setOrderQuantity] = useState(1)
 
+    
 
 
     selectFood.quantity = orderQuantity;
@@ -46,8 +47,6 @@ const FoodSelected = ({ selectFood }) => {
                                 <FontAwesomeIcon icon={faMinus} />
                             </button>
                                 }
-
-
                                 <p className='product_quantity'>{orderQuantity}</p>
                                 
                                 <button onClick={()=>setOrderQuantity(orderQuantity + 1)} className='quantity_btn plus_btn'>

@@ -2,16 +2,15 @@ import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './cart.css'
 import CartDetails from '../Cart Details/CartDetails'
-import { cartContext } from '../../App'
+import { CartContext } from '../../Contexts/cartContext'
+
+
 
 const Cart = () => {
   const [delivaryAddress, setdelivaryAddress] = useState([])
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => { setdelivaryAddress([...delivaryAddress, data]) };
-
-  const [cart] = useContext(cartContext)
-
 
   return (
     <section className='cart_section pt-5 pb-5'>
@@ -43,7 +42,7 @@ const Cart = () => {
               <p>Arriving in 20-30 min <br />107 Rd No 8</p>
               <div className="cart_details_container mt-3">
                 <div className="cart_details_inner mt-4">
-                  {cart && cart.map((cartPd) => <CartDetails cartItem={cartPd} />)}
+                  {/* {cart && cart.map((cartPd) => <CartDetails cartItem={cartPd} />)} */}
                 </div>
               </div>
             </div>

@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './cart_details.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
+
+
 const CartDetails = ({ cartItem }) => {
-    console.log(cartItem);
+
     const { photo_url, food_id, food_name, price, quantity } = cartItem
+
+
+
+
+
+
+
     return (
         <div className='cart_details mt-3'>
             <div className="cart_image">
@@ -17,11 +26,15 @@ const CartDetails = ({ cartItem }) => {
                 <p className='price'>${price}</p>
             </div>
             <div className="cart_item_count">
-                <button onClick={()=>quantity - 1 } className='minus_btn product_count_btn quantity_btn font-weight-700'>
+
+                <button onClick={() => console.log('minus clicked')} className='minus_btn product_count_btn quantity_btn font-weight-700'>
                     <FontAwesomeIcon icon={faMinus} />
                 </button>
-                <h6 className='cart_pd_quantity'>{quantity}</h6>
-                <button onClick={()=>quantity + 1} className=' font-weight-700 plus_btn product_count_btn quantity_btn'>
+
+                <h6 className='cart_pd_quantity'>{1}</h6>
+
+
+                <button   className=' font-weight-700 plus_btn product_count_btn quantity_btn'>
                     <FontAwesomeIcon icon={faPlus} />
                 </button>
             </div>

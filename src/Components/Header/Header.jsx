@@ -1,17 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './header.css'
 import Logo from '../../images/logo2.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import { cartContext } from '../../App';
+
 
 
 
 
 
 const Header = () => {
-    const [cart] = useContext(cartContext)
+
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-white px-2 py-3">
@@ -32,7 +32,7 @@ const Header = () => {
                             <Link to='/cart' replace={true}>
                                 <button className='cart-btn'>
                                     <FontAwesomeIcon color='#111' icon={faCartShopping} />
-                                    <p style={{ color: "#111" }}>{cart.length === 0 ? '!' : cart.length}</p>
+                                    {/* <p style={{ color: "#111" }}>{cart.length === 0 ? '!' : cart.length}</p> */}
                                 </button>
                             </Link>
                         </li>

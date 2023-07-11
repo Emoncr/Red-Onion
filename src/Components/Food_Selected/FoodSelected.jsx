@@ -2,28 +2,18 @@ import React, { useContext, useState } from 'react'
 import './food-selected.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
-import Food from '../FoodContainer/Food'
-import { cartContext } from '../../App'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../Contexts/cartContext'
+
+
 
 
 const FoodSelected = ({ selectFood }) => {
     const { food_id, price, photo_url, food_name, food_description, category } = selectFood
-    const [cart, setCart] = useContext(cartContext)
-    const [orderQuantity, setOrderQuantity] = useState(1)
 
-    
+    const {addToCart} = useContext(CartContext)
 
-
-    selectFood.quantity = orderQuantity;
-    const handleAddingCart = () => {
-        const checkCurrentFood = cart.find((food) => { 
-           if ( food.food_id === food_id) {
-            return true
-           }
-         })
-        checkCurrentFood ? setOrderQuantity(orderQuantity + 1) : setCart([...cart, selectFood])
-    }
-
+    // console.log(addToCart);
     return (
         <>
             <div className="row selected_food_container">
@@ -36,26 +26,26 @@ const FoodSelected = ({ selectFood }) => {
                         </div>
                         <div className="col-6 col-lg-4 quantity_block">
                             <div className="inner_quantity">
-
-                                {
-                                    orderQuantity <= 1 ? 
-                                    <button disabled className='quantity_btn'>
+                                <button className='quantity_btn'>
                                     <FontAwesomeIcon icon={faMinus} />
                                 </button>
-                                :
-                                <button onClick={()=>setOrderQuantity(orderQuantity - 1)}  className='quantity_btn'>
-                                <FontAwesomeIcon icon={faMinus} />
-                            </button>
-                                }
-                                <p className='product_quantity'>{orderQuantity}</p>
-                                
-                                <button onClick={()=>setOrderQuantity(orderQuantity + 1)} className='quantity_btn plus_btn'>
+
+                                <p className='product_quantity'>{1}</p>
+
+                                <button className='quantity_btn plus_btn'>
                                     <FontAwesomeIcon icon={faPlus} />
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <button onClick={handleAddingCart} className='mt-4 cart_btn'> <FontAwesomeIcon icon={faCartShopping} /> Add</button>
+                    <Link to='/cart' replace={true} >
+                        <button
+                         onClick={()=>addToCart(selectFood, 1)}
+                         className='mt-4 cart_btn'> 
+                         <FontAwesomeIcon icon={faCartShopping} />
+                          Add
+                          </button>
+                    </Link>
 
                 </div>
                 <div className="col col-xl-5">

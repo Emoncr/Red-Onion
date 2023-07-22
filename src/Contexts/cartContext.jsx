@@ -15,16 +15,16 @@ const CartContextProvider  = ({children}) => {
   }
 
 
-  const increaseQuantity=(food)=>{
+  const increaseQuantity=(plusBtnFoodid)=>{
     dispatch({
       type:'INCREASED',
-      payload:{food}
+      payload:{plusBtnFoodid}
     })
   }
-  const decreaseQuantity=(food)=>{
+  const decreaseQuantity=(minusBtnFoodid)=>{
     dispatch({
       type:'DECREASED',
-      payload:{food}
+      payload:{minusBtnFoodid}
     })
   }
 

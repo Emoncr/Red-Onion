@@ -12,6 +12,11 @@ const Cart = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => { setdelivaryAddress([...delivaryAddress, data]) };
 
+  const {cart} = useContext(CartContext)
+
+
+
+
   return (
     <section className='cart_section pt-5 pb-5'>
       <div className="section_inner">
@@ -42,7 +47,7 @@ const Cart = () => {
               <p>Arriving in 20-30 min <br />107 Rd No 8</p>
               <div className="cart_details_container mt-3">
                 <div className="cart_details_inner mt-4">
-                  {/* {cart && cart.map((cartPd) => <CartDetails cartItem={cartPd} />)} */}
+                  {cart && cart.map((cartPd) => <CartDetails key={cartPd.food_id} cartItem={cartPd} />)}
                 </div>
               </div>
             </div>

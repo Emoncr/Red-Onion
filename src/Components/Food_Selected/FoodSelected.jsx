@@ -10,10 +10,12 @@ import { CartContext } from '../../Contexts/cartContext'
 
 const FoodSelected = ({ selectFood }) => {
     const { food_id, price, photo_url, food_name, food_description, category } = selectFood
+    const {addToCart, cart, increaseQuantity, decreaseQuantity} = useContext(CartContext)
 
-    const {addToCart} = useContext(CartContext)
+    const [quantity , setQuantity]=useState(1)
 
-    // console.log(addToCart);
+
+
     return (
         <>
             <div className="row selected_food_container">
@@ -26,21 +28,32 @@ const FoodSelected = ({ selectFood }) => {
                         </div>
                         <div className="col-6 col-lg-4 quantity_block">
                             <div className="inner_quantity">
-                                <button className='quantity_btn'>
+
+
+                                 {/* ======MINUS QUANTITY BUTTON======= */}
+                                <button onClick={()=>
+                                    quantity <= 1? setQuantity(1) : setQuantity(quantity - 1)
+                                } className='quantity_btn'>
                                     <FontAwesomeIcon icon={faMinus} />
                                 </button>
 
-                                <p className='product_quantity'>{1}</p>
+                                <p className='product_quantity'>{quantity}</p>
 
-                                <button className='quantity_btn plus_btn'>
+
+                                {/* // =====PLUS QUANTITY BUTTON=======// */}
+                                <button onClick={()=>setQuantity(quantity + 1)} className='quantity_btn plus_btn'>
                                     <FontAwesomeIcon icon={faPlus} />
                                 </button>
                             </div>
                         </div>
                     </div>
+
+
+
+                    {/* // ==========ADD TO CART BUTTON=========// */}
                     <Link to='/cart' replace={true} >
                         <button
-                         onClick={()=>addToCart(selectFood, 1)}
+                         onClick={()=>addToCart(selectFood, quantity , setQuantity)}
                          className='mt-4 cart_btn'> 
                          <FontAwesomeIcon icon={faCartShopping} />
                           Add

@@ -1,21 +1,17 @@
 export const initialState = {
   cart: [],
-  total_amount: "",
-  shipping: "",
+  delivery: 2,
+  tax: 0.1,
 };
 
 export const cartReducer = (state, action) => {
   switch (action.type) {
-
-    
     //=======HANDLE ADD TO CART FUNCTIONALITY==========//
     case "ADD_TO_CART":
       const { food, quantity, setQuantity } = action.payload;
       const updateQuantityItem = { ...food, quantity };
       const cartAry = state.cart;
       const isItemExist = cartAry.find((item) => item.food_id === food.food_id);
-
-
 
       //===HANDLE EXISTING FOOD ITEM===//
       if (isItemExist) {
@@ -28,14 +24,11 @@ export const cartReducer = (state, action) => {
           }
         });
         return { ...state, cart: updateItemQuantity };
-      } else {
+      }
+      else {
         const cartItem = [...cartAry, updateQuantityItem];
         return { ...state, cart: cartItem };
       }
-
-
-
-
 
     //HANDLE CART ITEM PLUS QUANTITY BUTTON CLICKED
     case "INCREASED":
@@ -51,10 +44,6 @@ export const cartReducer = (state, action) => {
         }
       });
       return { ...state, cart: increasedQuantity };
-
-
-
-
 
     //HANDLE CART ITEM MINUS QUANTITY BUTTON CLICKED
     case "DECREASED":

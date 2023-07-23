@@ -9,7 +9,6 @@ import { CartContext } from "../../Contexts/cartContext";
 const Header = () => {
   const { cart } = useContext(CartContext);
 
-  console.log(cart);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white px-2 py-3">
       <div className="container-fluid d-flex">

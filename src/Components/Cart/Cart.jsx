@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import "./cart.css";
 import CartDetails from "../Cart Details/CartDetails";
 import { CartContext } from "../../Contexts/cartContext";
+import Pricing from "../Calculate Pricing/Pricing";
 
 const Cart = () => {
   const [delivaryAddress, setdelivaryAddress] = useState([]);
@@ -17,7 +18,7 @@ const Cart = () => {
     setdelivaryAddress([...delivaryAddress, data]);
   };
 
-  const { cart } = useContext(CartContext);
+  const { cart, tax, delivery } = useContext(CartContext);
 
   return (
     <section className="cart_section pt-5 pb-5">
@@ -62,25 +63,45 @@ const Cart = () => {
               </form>
             </div>
           </div>
-
           <div className="col-xl-4 col cart_details_container">
             <div className="cart_item_container">
-              <h6>
-                Form{" "}
-                <strong className="font-weight-bold">
-                  Gulshan Plaza Restaura GPR
-                </strong>{" "}
-              </h6>
-              <p>
-                Arriving in 20-30 min <br />
-                107 Rd No 8
-              </p>
+              <div className="info_container">
+                <div className="resturent_details">
+                  <h6 className="fw-bold">Form,</h6>
+                  <p>
+                    <strong className="font-weight-bold name">
+                      Gulshan Plaza Restaura GPR
+                    </strong>
+                  </p>
+                  <p>
+                    Arriving in 20-30 min <br />
+                    107 Rd No 8
+                  </p>
+                </div>
+                <div className=" details_container customer_details">
+                  <h6 className="fw-bold" style={{color:"#dc3545"}}>To,</h6>
+                  <p>
+                    <strong className="font-weight-bold name">
+                      Gulshan Plaza Restaura GPR
+                    </strong>
+                  </p>
+                  <p>
+                    Arriving in 20-30 min <br />
+                    107 Rd No 8
+                  </p>
+                </div>
+              </div>
               <div className="cart_details_container mt-3">
                 <div className="cart_details_inner mt-4">
                   {cart &&
                     cart.map((cartPd) => (
                       <CartDetails key={cartPd.food_id} cartItem={cartPd} />
                     ))}
+                </div>
+              </div>
+              <div className="pricing_section">
+                <div className="pricing_container mt-5">
+                  {<Pricing />}
                 </div>
               </div>
             </div>

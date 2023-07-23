@@ -2,5 +2,35 @@
     border-bottom:2px solid gray;
 }
 .from_container{
-    max-width: 600px;
+    max-width: 700px;
 }
+.info_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.resturent_details{
+    padding:0 10px;
+}
+.customer_details{
+    padding:0 10px;
+}
+@media only screen and (max-width: 600px) {
+    .cart_section .section_inner .row{
+        display: flex;
+        flex-direction: column;
+    }
+    .cart_details_container{
+        margin-top: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 482px) {
+    .info_container{
+flex-direction: column;
+        align-items: flex-start;
+    }
+    .customer_details{
+        margin-top: 15px;
+    }
+  }

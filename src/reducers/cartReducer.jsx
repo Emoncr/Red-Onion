@@ -1,5 +1,14 @@
+const localStorageData = localStorage.getItem("cart");
+const localStorageDataParse = JSON.parse(localStorageData);
+
+let databaseCart;
+
+localStorageDataParse === null
+  ? databaseCart = [] 
+  : databaseCart = localStorageDataParse;
+
 export const initialState = {
-  cart: [],
+  cart: databaseCart,
   delivery: 2,
   tax: 0.1,
 };
@@ -24,8 +33,7 @@ export const cartReducer = (state, action) => {
           }
         });
         return { ...state, cart: updateItemQuantity };
-      }
-      else {
+      } else {
         const cartItem = [...cartAry, updateQuantityItem];
         return { ...state, cart: cartItem };
       }
@@ -59,6 +67,13 @@ export const cartReducer = (state, action) => {
         }
       });
       return { ...state, cart: decreasedQuantity };
+
+    //======HANDLE REMOVE ITEM CLICKED======//
+    case "ITEM_REMOVE":
+      const { itemId } = action.payload;
+      const mainCart = state.cart;
+      const removeItem = mainCart.filter((item) => item.food_id != itemId);
+      return { ...state, cart: removeItem };
 
     default:
       return state;

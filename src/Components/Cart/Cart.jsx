@@ -1,24 +1,42 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./cart.css";
 import CartDetails from "../Cart Details/CartDetails";
 import { CartContext } from "../../Contexts/cartContext";
 import Pricing from "../Calculate Pricing/Pricing";
+import Delivary from "../Delivary Address/Delivary";
 
 const Cart = () => {
+  const { cart, setLocalStorageItem } = useContext(CartContext);
+
   const [delivaryAddress, setdelivaryAddress] = useState([]);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  //====handling initial delivery data ====//
+  useEffect(() => {
+    const localStorageData = localStorage.getItem("delivery__Address");
+    const localStorageDataParse = JSON.parse(localStorageData);
+    let savedAddress;
+    localStorageDataParse === null
+      ? (savedAddress = [])
+      : (savedAddress = localStorageDataParse);
+
+    setdelivaryAddress(savedAddress);
+  }, []);
+
+
+
+
+
+  //=====HANDLEING  FROM SUBMITING ======// 
+  const { register, handleSubmit,  formState: { errors },} = useForm();
   const onSubmit = (data) => {
-    setdelivaryAddress([...delivaryAddress, data]);
+    setdelivaryAddress([data]);
+    const valueStr = JSON.stringify([data]);
+    localStorage.setItem("delivery__Address", valueStr);
   };
 
-  const { cart, tax, delivery } = useContext(CartContext);
+ 
+ 
 
   return (
     <section className="cart_section pt-5 pb-5">
@@ -78,18 +96,20 @@ const Cart = () => {
                     107 Rd No 8
                   </p>
                 </div>
-                <div className=" details_container customer_details">
-                  <h6 className="fw-bold" style={{color:"#dc3545"}}>To,</h6>
-                  <p>
-                    <strong className="font-weight-bold name">
-                      Gulshan Plaza Restaura GPR
-                    </strong>
+
+                {/* //HANDLEING DELIVERY ADDRESS=========// */}
+                {delivaryAddress.length === 0 ? (
+                  <p
+                    className=" mt-2 text-primary fw-bold text-left"
+                    style={{ maxWidth: "200px" }}
+                  >
+                    Submit the form for delivery address{" "}
                   </p>
-                  <p>
-                    Arriving in 20-30 min <br />
-                    107 Rd No 8
-                  </p>
-                </div>
+                ) : (
+                  delivaryAddress.map((ad) => (
+                    <Delivary key={ad.address} delivaryInfo={ad} />
+                  ))
+                )}
               </div>
               <div className="cart_details_container mt-3">
                 <div className="cart_details_inner mt-4">
@@ -100,9 +120,7 @@ const Cart = () => {
                 </div>
               </div>
               <div className="pricing_section">
-                <div className="pricing_container mt-5">
-                  {<Pricing />}
-                </div>
+                <div className="pricing_container mt-5">{<Pricing />}</div>
               </div>
             </div>
           </div>

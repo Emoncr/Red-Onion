@@ -41,7 +41,7 @@ const Pricing = () => {
           <div className="amount_container">
             <div className="pricing_name fw-normal pricing">
               <p>
-                Sub Total *<span>{cart.length} item</span>{" "}
+                Sub Total *<span className="text-danger fw-bold px-1">{cart.length} item</span>{" "}
               </p>
             </div>
             <div className="price_area pricing">

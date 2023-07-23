@@ -39,7 +39,7 @@ const Header = () => {
                 <button className="cart-btn">
                   <FontAwesomeIcon color="#111" icon={faCartShopping} />
                   <p style={{ color: "#111" }}>
-                    {cart.length === 0 ? "!" : cart.length}
+                    { cart.length === 0 ? "!" : cart.length}
                   </p>
                 </button>
               </Link>

@@ -23,20 +23,17 @@ const Cart = () => {
     setdelivaryAddress(savedAddress);
   }, []);
 
-
-
-
-
-  //=====HANDLEING  FROM SUBMITING ======// 
-  const { register, handleSubmit,  formState: { errors },} = useForm();
+  //=====HANDLEING  FROM SUBMITING ======//
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const onSubmit = (data) => {
     setdelivaryAddress([data]);
     const valueStr = JSON.stringify([data]);
     localStorage.setItem("delivery__Address", valueStr);
   };
-
- 
- 
 
   return (
     <section className="cart_section pt-5 pb-5">
@@ -52,7 +49,7 @@ const Cart = () => {
                 <input
                   className="form-control"
                   id="name"
-                  placeholder="Your Name"
+                  placeholder={"Your Name"}
                   {...register("name", { required: true })}
                 />
 
@@ -122,6 +119,7 @@ const Cart = () => {
               <div className="pricing_section">
                 <div className="pricing_container mt-5">{<Pricing />}</div>
               </div>
+              
             </div>
           </div>
         </div>

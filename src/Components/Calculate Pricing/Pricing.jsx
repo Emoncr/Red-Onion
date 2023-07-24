@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import "./pricing.css";
 import { CartContext } from "../../Contexts/cartContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
   const { cart, tax, delivery } = useContext(CartContext);
@@ -34,14 +37,25 @@ const Pricing = () => {
   return (
     <div>
       {cart.length === 0 ? (
+        <div className="empty_cart_container">
           <p className=" empty_cart_msg"> Your cart is empty !!! &#128551;</p>
+          <Link to={"/"} replace={true}>
+            <button className="btn btn-danger w-100 fs-4 fw-bold mt-3">
+              Order Now
+              <FontAwesomeIcon className="px-2" icon={faArrowAltCircleRight} />
+            </button>
+          </Link>
+        </div>
       ) : (
         <div className="content_container">
           {/* SUB TOTAL SECTION CODE  */}
           <div className="amount_container">
             <div className="pricing_name fw-normal pricing">
               <p>
-                Sub Total *<span className="text-danger fw-bold px-1">{cart.length} item</span>{" "}
+                Sub Total *
+                <span className="text-danger fw-bold px-1">
+                  {cart.length} item
+                </span>{" "}
               </p>
             </div>
             <div className="price_area pricing">
@@ -83,6 +97,17 @@ const Pricing = () => {
             <div className="fw-bold  price_area pricing">
               <p>${grandTotal}</p>
             </div>
+          </div>
+          <div className="place_order_btn">
+            <Link to={"/order_confirm"} replace={true}>
+              <button className="btn btn-danger w-100 fs-4 fw-bold mt-3">
+                Place Order
+                <FontAwesomeIcon
+                  className="px-2"
+                  icon={faArrowAltCircleRight}
+                />
+              </button>
+            </Link>
           </div>
         </div>
       )}

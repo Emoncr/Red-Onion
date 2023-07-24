@@ -4,8 +4,8 @@ const localStorageDataParse = JSON.parse(localStorageData);
 let databaseCart;
 
 localStorageDataParse === null
-  ? databaseCart = [] 
-  : databaseCart = localStorageDataParse;
+  ? (databaseCart = [])
+  : (databaseCart = localStorageDataParse);
 
 export const initialState = {
   cart: databaseCart,

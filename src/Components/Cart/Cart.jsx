@@ -35,6 +35,23 @@ const Cart = () => {
     localStorage.setItem("delivery__Address", valueStr);
   };
 
+  //=======HANDLING WITHOUT FROM SUBMISSION ORDER ==========//
+
+  const isFromSubmitedChecker = (delivaryAddress) => {
+    let submited;
+    if (delivaryAddress.length === 0) {
+      submited = false;
+    } else {
+      submited = true;
+    }
+    return submited;
+  };
+  
+
+const isAddressProvided = isFromSubmitedChecker(delivaryAddress)
+console.log(isAddressProvided);
+
+
   return (
     <section className="cart_section pt-5 pb-5">
       <div className="section_inner">
@@ -117,9 +134,8 @@ const Cart = () => {
                 </div>
               </div>
               <div className="pricing_section">
-                <div className="pricing_container mt-5">{<Pricing />}</div>
+                <div className="pricing_container mt-5">{<Pricing isAddressProvided={isAddressProvided} />}</div>
               </div>
-              
             </div>
           </div>
         </div>

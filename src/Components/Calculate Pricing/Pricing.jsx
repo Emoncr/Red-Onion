@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const Pricing = () => {
+const Pricing = ({ isAddressProvided }) => {
   const { cart, tax, delivery } = useContext(CartContext);
 
   //CALCULATE PRICE OF FOOD ITEM===========//
@@ -98,16 +98,42 @@ const Pricing = () => {
               <p>${grandTotal}</p>
             </div>
           </div>
+
+          {/* =========place order btn ========== */}
           <div className="place_order_btn">
-            <Link to={"/order_confirm"} replace={true}>
-              <button className="btn btn-danger w-100 fs-4 fw-bold mt-3">
-                Place Order
-                <FontAwesomeIcon
-                  className="px-2"
-                  icon={faArrowAltCircleRight}
-                />
-              </button>
-            </Link>
+            {isAddressProvided ? (
+              <div>
+                <p className="text-danger fw-bold mb-0 mt-3">
+                "Order now for pure delight!" 	&#128515;
+                </p>
+
+                <Link to={"/order_confirm"} replace={true}>
+                  <button className="btn btn-danger w-100 fs-4 fw-bold mt-3">
+                    Place Order
+                    <FontAwesomeIcon
+                      className="px-2"
+                      icon={faArrowAltCircleRight}
+                    />
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <p className="text-danger fw-bold mb-0 mt-3">
+                  'Please, submit the from first for Order' &#129488;
+                </p>
+                <button
+                  disabled
+                  className="btn btn-secondary w-100 fs-4 fw-bold mt-3"
+                >
+                  Place Order
+                  <FontAwesomeIcon
+                    className="px-2"
+                    icon={faArrowAltCircleRight}
+                  />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

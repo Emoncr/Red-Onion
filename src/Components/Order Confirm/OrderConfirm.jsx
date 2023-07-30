@@ -12,7 +12,6 @@ const OrderConfirm = () => {
     ? (deliveryLocation = [])
     : (deliveryLocation = localStorageDataParse);
 
-
   return (
     <>
       <section className="order_confirm_container mb-5 mt-5 p-4">
@@ -39,12 +38,12 @@ const OrderConfirm = () => {
                 </div>
                 <div className="location_info_container bg-white rounded p-3 mt-4 ">
                   <div className="location_content">
-                    {deliveryLocation.map((adrs) => 
+                    {deliveryLocation.map((adrs) => (
                       <div key={adrs.address}>
                         <p className="fs-5 fw-bold mb-1">{adrs.name}</p>
                         <p className="text-secondary fw-bold">{adrs.address}</p>
                       </div>
-                    )}
+                    ))}
                   </div>
                   <div className="location_content mt-5">
                     <p className="fs-5 fw-bold mb-1">Shop Address</p>
@@ -58,7 +57,7 @@ const OrderConfirm = () => {
                   </p>
                 </div>
                 <div className="user_info_container bg-white rounded p-3 mt-4 ">
-                  <div className="user_info_inner d-flex align-items-flex-start justify-content-center">
+                  <div className="user_info_inner d-flex align-items-flex-start justify-content-flex-start">
                     <div className="image_container user_image_container">
                       <img
                         className="img-fluid w-100 "

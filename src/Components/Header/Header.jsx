@@ -2,7 +2,7 @@ import "./header.css";
 import Logo from "../../images/logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../Contexts/cartContext";
 
@@ -39,16 +39,15 @@ const Header = () => {
                 <button className="cart-btn">
                   <FontAwesomeIcon color="#111" icon={faCartShopping} />
                   <p style={{ color: "#111" }}>
-                    { cart.length === 0 ? "!" : cart.length}
+                    {cart.length === 0 ? "!" : cart.length}
                   </p>
                 </button>
               </Link>
             </li>
             <li className="nav-item ms-">
-              <button className="btn">Login</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn  btn-danger ">Sing up</button>
+              <Link to={"/login"} replace={true}>
+                <button className="btn btn-danger fw-bold">Login</button>
+              </Link>
             </li>
           </ul>
         </div>

@@ -16,9 +16,16 @@
     background: transparent;
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 .cart-btn p{
     font-size: 14px;
     font-weight: 700;
     color: #333;
+}
+
+@media   (max-width:600px) {
+    .cart-btn{
+        margin-right: 0px;
+    }
 }

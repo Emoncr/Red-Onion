@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { userContext } from "../../Contexts/appUserContext";
 
-const Login = () => {
+const Login = ({ loginInfo }) => {
   const { register, handleSubmit } = useForm();
+  const { setHandleError, handleError } = loginInfo;
+  const {state, addUserInfo} = useContext(userContext);
+
+console.log(state);
 
 
+
+
+  //=======HANDLIGN FROM SUBMITON AND EXECUTING LOGIN =======//
   const onSubmit = (data) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        const {displayName, email} = user;
+        addUserInfo(displayName, email)
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        const errText = errorMessage.slice(22, -2);
+        setHandleError({
+          ...handleError,
+          isError: true,
+          isLoginErr: true,
+          errorMessage: errText,
+        });
       });
   };
 

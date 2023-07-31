@@ -7,7 +7,7 @@ import Pricing from "../Calculate Pricing/Pricing";
 import Delivary from "../Delivary Address/Delivary";
 
 const Cart = () => {
-  const { cart, setLocalStorageItem } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   const [delivaryAddress, setdelivaryAddress] = useState([]);
 

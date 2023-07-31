@@ -5,7 +5,6 @@ import { firebaseConfig } from "../Firebase Config/firebaseConfig";
 import logo from "../../images/logo2.png";
 import googleLogo from "../../images/Google__G__Logo.svg";
 import facebookLogo from "../../images/facebokLogo.png";
-import { useForm } from "react-hook-form";
 import SignUp from "../SingUp/SignUp";
 import Login from "../Login/Login";
 
@@ -17,11 +16,12 @@ const Authentication = () => {
   const [isLoginActive, setIsLoginActive] = useState(true);
 
   const [handleError, setHandleError] = useState({
-    isError: "",
+    isError:'',
+    isLoginErr :'',
     errorMessage: "",
   });
 
-  console.log(isLoginActive);
+
   return (
     <section className="form_container_section">
       {/* ===========Login Form Part ============== */}
@@ -32,7 +32,7 @@ const Authentication = () => {
           </div>
         </div>
         {isLoginActive ? (
-          <Login />
+          <Login loginInfo={{setHandleError, handleError}} />
         ) : (
           <SignUp
             singUpInfo={{
@@ -54,7 +54,7 @@ const Authentication = () => {
               <p className="mb-0 mt-1 text-success text-center fw-bold">
                 {handleError.errorMessage}
               </p>
-            )}
+            ) }
           </div>
           {/* ==========provider Buttons ======= */}
           <div className="login_provider d-flex align-items-center justify-content-space-between mt-4">
@@ -94,6 +94,7 @@ const Authentication = () => {
           <button
             onClick={() => {
               isLoginActive ? setIsLoginActive(false) : setIsLoginActive(true);
+              setHandleError({...handleError, errorMessage:""})
             }}
             className="btn btn-muted signup_btn w-100 mt-4 fw-bold"
           >

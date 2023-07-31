@@ -30,8 +30,9 @@ const SignUp = ({ singUpInfo }) => {
       .catch((error) => {
         setHandleError({
           ...handleError,
-          errorMessage: "Email already used,Please, try again with new email",
+          errorMessage: 'Email already used, Try again with new email',
           isError: true,
+          isLoginErr:false,
         });
       });
   };

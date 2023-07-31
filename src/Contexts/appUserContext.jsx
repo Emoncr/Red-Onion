@@ -1,12 +1,32 @@
-import React from 'react'
+import { React, createContext, useEffect, useReducer } from "react";
+import { initialState, userReducer } from "../reducers/userReducer";
 
+export const userContext = createContext();
 
-const appUserContext = () => {
+const AppUserContext = ({ children }) => {
+  const [state, dispatch] = useReducer(userReducer, initialState);
+
+  const addUserInfo = (name, email, photo, address, number) => {
+    dispatch({
+      type: "ADD_USER_INFO",
+      payload: { name, email, photo, address },
+    });
+  };
+
+  //========SET USER to LOCAL STORAGE=======//
+  const setUserLocalStorage = (keyName, value) => {
+    useEffect(() => {
+      const valueStr = JSON.stringify(value);
+      localStorage.setItem(keyName, valueStr);
+    }, [value]);
+  };
+  // setUserLocalStorage("user", state.user);
+
   return (
-    <div>
-      <h1>This is api contexf</h1>
-    </div>
-  )
-}
+    <userContext.Provider value={{ state, addUserInfo }}>
+      {children}
+    </userContext.Provider>
+  );
+};
 
-export default appUserContext
+export default AppUserContext;

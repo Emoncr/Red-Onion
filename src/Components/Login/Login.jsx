@@ -1,13 +1,23 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  const { register, handleSubmit } = useForm();
 
-
-  const { register, handleSubmit, formState } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   return (

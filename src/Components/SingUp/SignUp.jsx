@@ -1,18 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const SignUp = () => {
-    
-  const { register, handleSubmit, formState } = useForm();
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
-  const onSubmit = (data) => {
-    console.log(data);
+const SignUp = ({ singUpInfo }) => {
+  const { setHandleError, handleError, setIsLoginActive } = singUpInfo;
+
+  const { register, handleSubmit } = useForm();
+
+  const HandleSignIn = (data) => {
+    const userName = data.name;
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateProfile(user, { displayName: userName });
+        setIsLoginActive(true);
+
+        setHandleError({
+          ...handleError,
+          errorMessage: "Register successful! Login Now !",
+          isError: false,
+        });
+      })
+      .catch((error) => {
+        setHandleError({
+          ...handleError,
+          errorMessage: "Email already used,Please, try again with new email",
+          isError: true,
+        });
+      });
   };
+
+  //===========Handling SingUp Process============//
 
   return (
     <div className="singUp_from_Container">
       <form
-        onSubmit={console.log("submt")}
+        onSubmit={handleSubmit(HandleSignIn)}
         className="singUp_from form-container"
       >
         <input

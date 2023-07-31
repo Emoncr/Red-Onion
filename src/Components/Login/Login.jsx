@@ -8,10 +8,6 @@ const Login = ({ loginInfo }) => {
   const { setHandleError, handleError } = loginInfo;
   const {state, addUserInfo} = useContext(userContext);
 
-console.log(state);
-
-
-
 
   //=======HANDLIGN FROM SUBMITON AND EXECUTING LOGIN =======//
   const onSubmit = (data) => {

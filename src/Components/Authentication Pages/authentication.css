@@ -25,6 +25,7 @@
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
   position: relative;
   cursor: pointer;
+  border: none;
 }
 .google-icon-wrapper {
   display: flex;
@@ -39,6 +40,10 @@
 .google-icon-wrapper img {
   width: 26px !important;
   margin: 0 auto !important;
+}
+
+.btn-text{
+  text-align: left;
 }
 
 .text_container {

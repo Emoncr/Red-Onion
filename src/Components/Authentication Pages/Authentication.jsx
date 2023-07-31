@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./authentication.css";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../Firebase Config/firebaseConfig";
@@ -7,20 +7,47 @@ import googleLogo from "../../images/Google__G__Logo.svg";
 import facebookLogo from "../../images/facebokLogo.png";
 import SignUp from "../SingUp/SignUp";
 import Login from "../Login/Login";
+import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
+import { userContext } from "../../Contexts/appUserContext";
 
 //========Initialize Firebase App=========//
 const app = initializeApp(firebaseConfig);
-
 
 const Authentication = () => {
   const [isLoginActive, setIsLoginActive] = useState(true);
 
   const [handleError, setHandleError] = useState({
-    isError:'',
-    isLoginErr :'',
+    isError: "",
+    isLoginErr: "",
     errorMessage: "",
   });
 
+  const {addUserInfo} = useContext(userContext);
+
+
+
+  //======HANDLE GOOGLE SING IN METHOD======//
+  const handkeGoogleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        const{email, displayName,photoURL}= user;
+        addUserInfo(displayName,email,photoURL)
+
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(errorMessage);
+      });
+  };
 
   return (
     <section className="form_container_section">
@@ -32,7 +59,7 @@ const Authentication = () => {
           </div>
         </div>
         {isLoginActive ? (
-          <Login loginInfo={{setHandleError, handleError}} />
+          <Login loginInfo={{ setHandleError, handleError }} />
         ) : (
           <SignUp
             singUpInfo={{
@@ -54,11 +81,13 @@ const Authentication = () => {
               <p className="mb-0 mt-1 text-success text-center fw-bold">
                 {handleError.errorMessage}
               </p>
-            ) }
+            )}
           </div>
           {/* ==========provider Buttons ======= */}
           <div className="login_provider d-flex align-items-center justify-content-space-between mt-4">
-            <div className="google-btn">
+            {/*======== google sing in button  =======*/}
+
+            <button onClick={handkeGoogleSignIn} className="google-btn">
               <div className="google-icon-wrapper">
                 <div className="image_container">
                   <img className="google-icon img-fluid" src={googleLogo} />
@@ -71,8 +100,8 @@ const Authentication = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="google-btn facebook_btn">
+            </button>
+            <button className="google-btn facebook_btn">
               <div className="google-icon-wrapper">
                 <div className="image_container ">
                   <img className="google-icon img-fluid" src={facebookLogo} />
@@ -85,7 +114,7 @@ const Authentication = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </button>
           </div>
         </>
         {/* ==========Handling Don't have account ======= */}
@@ -94,7 +123,7 @@ const Authentication = () => {
           <button
             onClick={() => {
               isLoginActive ? setIsLoginActive(false) : setIsLoginActive(true);
-              setHandleError({...handleError, errorMessage:""})
+              setHandleError({ ...handleError, errorMessage: "" });
             }}
             className="btn btn-muted signup_btn w-100 mt-4 fw-bold"
           >

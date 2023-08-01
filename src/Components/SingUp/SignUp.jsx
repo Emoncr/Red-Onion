@@ -20,7 +20,6 @@ const SignUp = ({ singUpInfo }) => {
         const user = userCredential.user;
         updateProfile(user, { displayName: userName });
         setIsLoginActive(true);
-
         setHandleError({
           ...handleError,
           errorMessage: "Register successful! Login Now !",

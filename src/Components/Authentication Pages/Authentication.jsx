@@ -7,8 +7,9 @@ import googleLogo from "../../images/Google__G__Logo.svg";
 import facebookLogo from "../../images/facebokLogo.png";
 import SignUp from "../SingUp/SignUp";
 import Login from "../Login/Login";
-import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { userContext } from "../../Contexts/appUserContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 //========Initialize Firebase App=========//
 const app = initializeApp(firebaseConfig);
@@ -22,9 +23,9 @@ const Authentication = () => {
     errorMessage: "",
   });
 
-  const {addUserInfo} = useContext(userContext);
-
-
+  const { addUserInfo } = useContext(userContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   //======HANDLE GOOGLE SING IN METHOD======//
   const handkeGoogleSignIn = () => {
@@ -33,11 +34,12 @@ const Authentication = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
         const user = result.user;
-        const{email, displayName,photoURL}= user;
-        addUserInfo(displayName,email,photoURL)
-
+        const { email, displayName, photoURL } = user;
+        addUserInfo(displayName, email, photoURL);
+        if (location.state.from) {
+          navigate(location.state.from);
+        }
       })
       .catch((error) => {
         // Handle Errors here.

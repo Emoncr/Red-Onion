@@ -2,12 +2,16 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { userContext } from "../../Contexts/appUserContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = ({ loginInfo }) => {
   const { register, handleSubmit } = useForm();
   const { setHandleError, handleError } = loginInfo;
-  const {state, addUserInfo} = useContext(userContext);
+  const {userLoginState,addUserInfo } = useContext(userContext);
+  console.log(userLoginState);
 
+  const location = useLocation();
+  const navigate = useNavigate();
 
   //=======HANDLIGN FROM SUBMITON AND EXECUTING LOGIN =======//
   const onSubmit = (data) => {
@@ -15,8 +19,9 @@ const Login = ({ loginInfo }) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const {displayName, email} = user;
-        addUserInfo(displayName, email)
+        const { displayName, email } = user;
+        addUserInfo(displayName, email);
+        location.state.from && navigate(location.state.from);
       })
       .catch((error) => {
         const errorMessage = error.message;

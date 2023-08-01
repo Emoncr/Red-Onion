@@ -6,7 +6,8 @@ import Home from "./Components/Home/Home";
 import Cart from "./Components/Cart/Cart";
 import OrderConfirm from "./Components/Order Confirm/OrderConfirm";
 import Authentication from "./Components/Authentication Pages/Authentication";
-
+import PrivateOutlet from "./Components/Private Outlet/PrivateOutlet";
+import PrivateRoute from "./Components/Private Route/PrivateRoute";
 
 function App() {
   return (
@@ -16,9 +17,20 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path=":id" element={<FoodDetails />} />
-        <Route path="/login" element={<Authentication/>} />
+        <Route path="/login" element={<Authentication />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/order_confirm" element={<OrderConfirm />} />
+        <Route
+          path="/order_confirm"
+          element={
+            <PrivateRoute>
+              <OrderConfirm />
+            </PrivateRoute>
+          }
+        />
+
+        {/* <Route exact path="*" element={<PrivateOutlet />}>
+          <Route path="/order_confirm" element={<OrderConfirm />} />
+        </Route> */}
       </Routes>
     </BrowserRouter>
   );

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./order_ confirm.css";
 import mapImage from "../../images/8 ordercomplete.png";
 import cartoonImage from "../../images/Group 1151.png";
 import userImage from "../../images/Group 1152.png";
+import { userContext } from "../../Contexts/appUserContext";
 
 const OrderConfirm = () => {
   let deliveryLocation;
@@ -66,10 +67,8 @@ const OrderConfirm = () => {
                       />
                     </div>
                     <div className="user_name_container">
-                      <p className="fw-bold mb-1">Shop Address</p>
-                      <p className="text-secondary fw-bold">
-                        Gulshan Plaza GPR
-                      </p>
+                      <p className="text-danger fw-bold mb-1">Hamim</p>
+                      <p className="text-secondary fw-bold lh-sm">Your Rider</p>
                     </div>
                   </div>
                 </div>

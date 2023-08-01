@@ -4,7 +4,7 @@ import { initialState, userReducer } from "../reducers/userReducer";
 export const userContext = createContext();
 
 const AppUserContext = ({ children }) => {
-  const [state, dispatch] = useReducer(userReducer, initialState);
+  const [userLoginState, dispatch] = useReducer(userReducer, initialState);
 
   const addUserInfo = (name, email, photo, address, number) => {
     dispatch({
@@ -23,7 +23,7 @@ const AppUserContext = ({ children }) => {
   // setUserLocalStorage("user", state.user);
 
   return (
-    <userContext.Provider value={{ state, addUserInfo }}>
+    <userContext.Provider value={{ userLoginState, addUserInfo }}>
       {children}
     </userContext.Provider>
   );

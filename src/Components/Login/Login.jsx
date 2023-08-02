@@ -7,8 +7,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Login = ({ loginInfo }) => {
   const { register, handleSubmit } = useForm();
   const { setHandleError, handleError } = loginInfo;
-  const {userLoginState,addUserInfo } = useContext(userContext);
-  console.log(userLoginState);
+  const {addUserInfo } = useContext(userContext);
+
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const Login = ({ loginInfo }) => {
       })
       .catch((error) => {
         const errorMessage = error.message;
+        console.log(errorMessage);
         const errText = errorMessage.slice(22, -2);
         setHandleError({
           ...handleError,

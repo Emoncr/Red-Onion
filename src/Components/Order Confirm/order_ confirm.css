@@ -1,10 +1,14 @@
-.empty_div{
 
-}
 .order_details_inner{
     background-color: #f0f0f0;
 }
 .user_image_container{
     width: 70px;
     padding-right: 10px;
+}
+
+@media screen and (max-width: 768px){
+    .order_details_container{
+        margin-top: 40px;
+    }
 }

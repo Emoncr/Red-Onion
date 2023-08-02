@@ -74,7 +74,10 @@ export const cartReducer = (state, action) => {
       const mainCart = state.cart;
       const removeItem = mainCart.filter((item) => item.food_id != itemId);
       return { ...state, cart: removeItem };
-
+ 
+    case "CLAER_CART":
+      return {...state, cart:[]}
+    
     default:
       return state;
   }

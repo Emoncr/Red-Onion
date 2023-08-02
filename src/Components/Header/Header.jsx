@@ -2,12 +2,16 @@ import "./header.css";
 import Logo from "../../images/logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../Contexts/cartContext";
+import userImagePlaceholder from "../../images/defult User.png";
+import { userContext } from "../../Contexts/appUserContext";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
+  const { userLoginState } = useContext(userContext);
+  const { userEmail } = userLoginState.user;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white px-2 py-3">
@@ -44,11 +48,38 @@ const Header = () => {
                 </button>
               </Link>
             </li>
-            <li className="nav-item ms-">
-              <Link to={"/login"} replace={true}>
-                <button className="btn btn-danger fw-bold">Login</button>
-              </Link>
-            </li>
+            {userEmail ? (
+              <li className="nav-item Btn_container">
+                <div className="userImage">
+                  <button className="btn btn-danger user_image_btn ">
+                    <div className="image-container">
+                      {userLoginState.user.userImage ? (
+                        <img
+                          className="img-fluid w-100"
+                          src={userLoginState.user.userImage}
+                          alt="Defult User Image"
+                        />
+                      ) : (
+                        <img
+                          className="img-fluid w-100"
+                          src={userImagePlaceholder}
+                          alt="Defult User Image"
+                        />
+                      )}
+                    </div>
+                  </button>
+                  <button className="btn btn-danger fw-bold btn_logOut">
+                    Log Out
+                  </button>
+                </div>
+              </li>
+            ) : (
+              <li>
+                <Link to={"/login"} replace={true}>
+                  <button className="btn btn-danger fw-bold">Login</button>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

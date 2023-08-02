@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+
 const Pricing = ({ isAddressProvided }) => {
   const { cart, tax, delivery } = useContext(CartContext);
 
@@ -104,7 +105,7 @@ const Pricing = ({ isAddressProvided }) => {
             {isAddressProvided ? (
               <div>
                 <p className="text-danger fw-bold mb-0 mt-3">
-                "Order now for pure delight!" 	&#128515;
+                  "Order now for pure delight!" &#128515;
                 </p>
 
                 <Link to={"/order_confirm"} replace={true}>

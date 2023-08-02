@@ -34,6 +34,14 @@ const CartContextProvider = ({ children }) => {
     });
   };
 
+  const clearCart=()=>{
+    dispatch({
+      type: 'CLAER_CART'
+    })
+  }
+
+
+
   //========SET CART ITEM TO LOCAL STORAGE=======//
   const setLocalStorageItem = (keyName, value) => {
     useEffect(() => {
@@ -52,6 +60,7 @@ const CartContextProvider = ({ children }) => {
         setLocalStorageItem,
         decreaseQuantity,
         removeItem,
+        clearCart
       }}
     >
       {children}

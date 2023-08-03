@@ -3,6 +3,7 @@ import "./food.css";
 import Data from "../../FakeData/FakeData";
 import FoodItem from "../FoodItem/FoodItem";
 import { CartContext } from "../../Contexts/cartContext";
+import { Link } from "react-router-dom";
 
 const Food = ({ dynamicCat }) => {
   const [data] = useState(Data);
@@ -11,8 +12,7 @@ const Food = ({ dynamicCat }) => {
   const [activeButton, setActiveButton] = useState("");
   const { cart } = useContext(CartContext);
 
-console.log(cart);
-
+  console.log(cart);
 
   const getCategory = (data, property) => {
     let catValue = data.map((cat) => cat[property]);
@@ -83,13 +83,15 @@ console.log(cart);
         </div>
         <div className="cart_btn_container mt-5 text-uppercase d-flex justify-content-center">
           {cart.length === 0 ? (
-            <button className="px-5 mt-4 fw-normal btn-secondary btn ">
+            <button disabled className="px-5 mt-4 fw-normal btn-secondary btn ">
               Checkout Your Food
             </button>
           ) : (
-            <button className="px-5 mt-4 fw-normal btn btn-danger">
-              Checkout Your Food
-            </button>
+            <Link to={"/cart"}>
+              <button className="px-5 mt-4 fw-normal btn btn-danger">
+                Checkout Your Food
+              </button>
+            </Link>
           )}
         </div>
       </div>

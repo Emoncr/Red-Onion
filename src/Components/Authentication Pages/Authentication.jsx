@@ -16,8 +16,6 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 
-
-
 //========Initialize Firebase App=========//
 const app = initializeApp(firebaseConfig);
 
@@ -44,6 +42,12 @@ const Authentication = () => {
         const user = result.user;
         const { email, displayName, photoURL } = user;
         addUserInfo(displayName, email, photoURL);
+        setHandleError({
+          ...handleError,
+          isError: false,
+          isLoginErr: false,
+          errorMessage: "Login Successfull",
+        });
         if (location.state.from) {
           navigate(location.state.from);
         }
@@ -65,20 +69,10 @@ const Authentication = () => {
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
         const user = result.user;
-
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
         console.log(user);
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
         console.log(errorMessage);
       });
   };

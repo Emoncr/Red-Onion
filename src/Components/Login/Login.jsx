@@ -21,6 +21,12 @@ const Login = ({ loginInfo }) => {
         if (user) {
           const { displayName, email } = user;
           addUserInfo(displayName, email);
+          setHandleError({
+            ...handleError,
+            isError: false,
+            isLoginErr: true,
+            errorMessage: 'Login Successfull',
+          });
         }
         if (location.state?.from) {
           navigate(location.state.from);

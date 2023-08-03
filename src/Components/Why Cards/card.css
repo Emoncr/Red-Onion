@@ -1,0 +1,22 @@
+
+.why_card{
+    width: 100% !important;
+    max-width: 380px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    border-radius: 17px;
+}
+
+.why_card_body{
+    padding-left:10px;
+}
+.service_container{
+    padding:0 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.service_container .image_container{
+    padding-top: 7px;
+}

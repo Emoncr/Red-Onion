@@ -1,51 +1,50 @@
-.card_col{
-    max-width: 26%;
-    margin-top: 40px !important;
+.card_col {
+  max-width: 26%;
+  margin-top: 40px !important;
 }
-.card{
-    padding: 10px 20px;
-    border: none;
-    transition: .2s ease-in;
-    cursor: pointer;
-    border-radius: 0px !important;  
+.card_col .card {
+  padding: 10px 20px;
+  border: none;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+  border-radius: 0px !important;
 }
-.card:hover{
-    box-shadow: 4px 4px 20px rgba(161, 88, 88, 0.281);
-    transform:scale(1.1);
+.card_col .card:hover {
+  box-shadow: 4px 4px 20px rgba(161, 88, 88, 0.281);
+  transform: scale(1.1);
 }
-.card-body{
-    padding: 0;
-    margin-top: 10px;
+.card_col .card-body {
+  padding: 0;
+  margin-top: 10px !important;
 }
-.card .card-title{
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-align: center;
-    color: #222 !important;
+.card_col .card .card-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #222 !important;
 }
-.card p{
-    text-align: center;
-    font-weight: 400;
-    color: #333333b7;
-    font-size: 14px;
+.card_col .card p {
+  text-align: center;
+  font-weight: 400;
+  color: #333333b7;
+  font-size: 14px;
 }
-.card .food_price{
-    font-weight: 700;
-    color: #000 ;
+.card_col .card .food_price {
+  font-weight: 700;
+  color: #000;
 }
-.card img{
-    margin: 0 auto;
-    max-width: 40%;
+.card_col .card img {
+  margin: 0 auto;
+  max-width: 40%;
+}
 
-}
-
-@media only screen and (max-width: 767px){
-    .card_col{
-        max-width: 100%;
-        width: 100% !important;
-    }
-    .card{
-        box-shadow: 4px 4px 20px #0000000e;
-    }
+@media only screen and (max-width: 767px) {
+  .card_col {
+    max-width: 100%;
+    width: 100% !important;
+  }
+  .card_col .card {
+    box-shadow: 4px 4px 20px #0000000e;
+  }
 }

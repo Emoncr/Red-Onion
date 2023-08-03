@@ -15,6 +15,9 @@
 .customer_details{
     padding:0 10px;
 }
+.cart_section{
+    padding-bottom: 80px !important;
+}
 @media only screen and (max-width: 600px) {
     .cart_section .section_inner .row{
         display: flex;

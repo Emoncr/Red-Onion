@@ -12,7 +12,6 @@ const Food = ({ dynamicCat }) => {
   const [activeButton, setActiveButton] = useState("");
   const { cart } = useContext(CartContext);
 
-  console.log(cart);
 
   const getCategory = (data, property) => {
     let catValue = data.map((cat) => cat[property]);

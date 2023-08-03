@@ -1,0 +1,13 @@
+.inner_card_cotnainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.why_chose_us{
+  padding-bottom: 70px !important;
+}
+.text-description {
+  max-width: 800px;
+}

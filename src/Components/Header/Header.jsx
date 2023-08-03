@@ -12,7 +12,7 @@ const Header = () => {
   const [isUserBtnClick, setIsUserBtnClick] = useState(false);
 
 
-  console.log(isUserBtnClick);
+
   const { cart } = useContext(CartContext);
   const { userLoginState, handleLogOut } = useContext(userContext);
   const { userEmail } = userLoginState.user;

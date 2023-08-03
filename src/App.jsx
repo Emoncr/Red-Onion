@@ -6,8 +6,9 @@ import Home from "./Components/Home/Home";
 import Cart from "./Components/Cart/Cart";
 import OrderConfirm from "./Components/Order Confirm/OrderConfirm";
 import Authentication from "./Components/Authentication Pages/Authentication";
-import PrivateOutlet from "./Components/Private Outlet/PrivateOutlet";
 import PrivateRoute from "./Components/Private Route/PrivateRoute";
+import Footer from "./Components/Footer/Footer";
+
 
 function App() {
   return (
@@ -27,8 +28,8 @@ function App() {
             </PrivateRoute>
           }
         />
-
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

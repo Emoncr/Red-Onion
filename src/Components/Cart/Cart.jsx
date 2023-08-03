@@ -46,11 +46,8 @@ const Cart = () => {
     }
     return submited;
   };
-  
 
-const isAddressProvided = isFromSubmitedChecker(delivaryAddress)
-console.log(isAddressProvided);
-
+  const isAddressProvided = isFromSubmitedChecker(delivaryAddress);
 
   return (
     <section className="cart_section pt-5 pb-5">
@@ -134,7 +131,9 @@ console.log(isAddressProvided);
                 </div>
               </div>
               <div className="pricing_section">
-                <div className="pricing_container mt-5">{<Pricing isAddressProvided={isAddressProvided} />}</div>
+                <div className="pricing_container mt-5">
+                  {<Pricing isAddressProvided={isAddressProvided} />}
+                </div>
               </div>
             </div>
           </div>

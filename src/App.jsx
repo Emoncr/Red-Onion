@@ -28,9 +28,6 @@ function App() {
           }
         />
 
-        {/* <Route exact path="*" element={<PrivateOutlet />}>
-          <Route path="/order_confirm" element={<OrderConfirm />} />
-        </Route> */}
       </Routes>
     </BrowserRouter>
   );

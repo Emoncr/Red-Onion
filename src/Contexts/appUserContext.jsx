@@ -13,17 +13,18 @@ const AppUserContext = ({ children }) => {
     });
   };
 
-  //========SET USER to LOCAL STORAGE=======//
-  const setUserLocalStorage = (keyName, value) => {
-    useEffect(() => {
-      const valueStr = JSON.stringify(value);
-      localStorage.setItem(keyName, valueStr);
-    }, [value]);
-  };
-  // setUserLocalStorage("user", state.user);
+const handleLogOut = ()=>{
+  dispatch({
+    type: 'LOGOUT_USER'
+  })
+}
+
+  
+
+
 
   return (
-    <userContext.Provider value={{ userLoginState, addUserInfo }}>
+    <userContext.Provider value={{ userLoginState, addUserInfo,handleLogOut }}>
       {children}
     </userContext.Provider>
   );

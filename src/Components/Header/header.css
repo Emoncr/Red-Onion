@@ -27,15 +27,15 @@
 .img_btn:focus {
   box-shadow: none;
 }
+
 .user_image_btn {
   background-color: transparent !important;
   max-width: 30px;
   margin: 0 auto;
   padding: 0;
-  position: relative;
   border-radius: 50%;
   border: none;
-  transition: 0.3s ease-in;
+
 }
 .user_image_btn:focus{
     box-shadow: none;
@@ -53,20 +53,35 @@
   align-items: center;
   justify-content: center;
 }
-.user_image_btn~.btn_logOut {
+.user_image_btn{
+  position: relative;
+}
+.user_image_btn~.user_name_text {
   position: absolute;
-  bottom: -30px;
-  right: 10px;
-  transition: 0.3s ease-in;
+  bottom: -25px;
+  right: 100px;
+  transition: all 0.25s ease-in !important; /* here */
   display: none !important;
 }
-.btn_logOut {
-  box-shadow: none !important;
-}
-.user_image_btn:focus ~ .btn_logOut{
+
+.user_image_btn:hover ~ .user_name_text, .user_image_btn:focus ~ .user_name_text{
     display: block!important;
 }
+.navbar-nav{
+  display: flex !important;
+  align-items: center;
+  flex-direction: row;
+}
 
+@media (max-width:768px){
+  .navbar .nav-button{
+    font-size: 12px !important;
+    border: none !important;
+  }
+  .cart-btn{
+    margin-right:0 ;
+  }
+}
 
 @media (max-width: 600px) {
   .cart-btn {

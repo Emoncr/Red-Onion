@@ -20,7 +20,8 @@ export const userReducer = (state, action) => {
         setUserInfo = { ...setUserInfo, userNumber: number };
       }
       return { ...state, user: setUserInfo };
-
+    case 'LOGOUT_USER':
+      return { ...state, user: {} };
     default:
       return state;
   }

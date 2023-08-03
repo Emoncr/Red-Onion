@@ -14,7 +14,7 @@ const Login = ({ loginInfo }) => {
   const navigate = useNavigate();
 
   //=======HANDLIGN FROM SUBMITON AND EXECUTING LOGIN =======//
-  const onSubmit = (data) => {
+  const HandleUserLogin = (data) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
@@ -39,7 +39,7 @@ const Login = ({ loginInfo }) => {
   return (
     <div className="login_from_Container">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(HandleUserLogin)}
         className="Login_from form-container"
       >
         <input

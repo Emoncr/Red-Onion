@@ -3,12 +3,14 @@ import Logo from "../../images/logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGripLines } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../Contexts/cartContext";
 import userImagePlaceholder from "../../images/defult User.png";
 import { userContext } from "../../Contexts/appUserContext";
 
 const Header = () => {
+  const [isUserBtnClick, setIsUserBtnClick] = useState(false);
+
   const { cart } = useContext(CartContext);
   const { userLoginState, handleLogOut } = useContext(userContext);
   const { userEmail, userName } = userLoginState.user;
@@ -21,7 +23,7 @@ const Header = () => {
             <img width="100px" src={Logo} alt="logo" />
           </Link>
         </div>
-        
+
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex  align-items-center">
           <li className="nav-item ">
             <Link to="/cart" replace={true}>
@@ -37,8 +39,11 @@ const Header = () => {
           {userEmail ? (
             <>
               <li className="nav-item ">
-                <div className="userImage">
-                  <button className="btn nav-button btn-danger user_image_btn ">
+                <div className="user_image">
+                  <button
+                    onClick={() => setIsUserBtnClick(!isUserBtnClick)}
+                    className="btn nav-button btn-danger user_image_btn "
+                  >
                     <div className="image-container">
                       {userLoginState.user.userImage ? (
                         <img
@@ -55,19 +60,20 @@ const Header = () => {
                       )}
                     </div>
                   </button>
-                  <p class="fs-6 fw-bold  text-danger user_name_text">
-                    {userName}
-                  </p>
+                  {isUserBtnClick && (
+                    <button
+                      onClick={handleLogOut}
+                      className="btn btn-danger nav-button fw-bold btn_logOut"
+                    >
+                      LogOut
+                    </button>
+                  )}
                 </div>
               </li>
-              <li>
-                <button
-                  onClick={handleLogOut}
-                  className="btn btn-danger nav-button fw-bold btn_logOut"
-                >
-                  Log Out
-                </button>
-              </li>
+
+              {/* <li>
+
+              </li> */}
             </>
           ) : (
             <li>

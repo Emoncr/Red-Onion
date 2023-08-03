@@ -72,7 +72,17 @@
   align-items: center;
   flex-direction: row;
 }
+.user_image{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.btn_logOut{
+    position: absolute;
+    top: 40px;
+right: 0px;
 
+}
 @media (max-width:768px){
   .navbar .nav-button{
     font-size: 12px !important;

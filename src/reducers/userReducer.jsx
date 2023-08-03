@@ -20,7 +20,10 @@ export const userReducer = (state, action) => {
         setUserInfo = { ...setUserInfo, userNumber: number };
       }
       return { ...state, user: setUserInfo };
-    case 'LOGOUT_USER':
+
+    case "LOGOUT_USER":
+      const { isUserClick, SetIsUserClick } = action.payload;
+      SetIsUserClick(!isUserClick);
       return { ...state, user: {} };
     default:
       return state;

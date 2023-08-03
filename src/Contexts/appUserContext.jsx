@@ -13,9 +13,10 @@ const AppUserContext = ({ children }) => {
     });
   };
 
-const handleLogOut = ()=>{
+const handleLogOut = (isUserClick, SetIsUserClick)=>{
   dispatch({
-    type: 'LOGOUT_USER'
+    type: 'LOGOUT_USER',
+    payload:{isUserClick, SetIsUserClick}
   })
 }
 

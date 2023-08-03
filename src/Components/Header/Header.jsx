@@ -11,9 +11,11 @@ import { userContext } from "../../Contexts/appUserContext";
 const Header = () => {
   const [isUserBtnClick, setIsUserBtnClick] = useState(false);
 
+
+  console.log(isUserBtnClick);
   const { cart } = useContext(CartContext);
   const { userLoginState, handleLogOut } = useContext(userContext);
-  const { userEmail, userName } = userLoginState.user;
+  const { userEmail } = userLoginState.user;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white px-2 py-3">
@@ -62,7 +64,7 @@ const Header = () => {
                   </button>
                   {isUserBtnClick && (
                     <button
-                      onClick={handleLogOut}
+                      onClick={()=>handleLogOut(isUserBtnClick, setIsUserBtnClick)}
                       className="btn btn-danger nav-button fw-bold btn_logOut"
                     >
                       LogOut

@@ -7,8 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Login = ({ loginInfo }) => {
   const { register, handleSubmit } = useForm();
   const { setHandleError, handleError } = loginInfo;
-  const {addUserInfo } = useContext(userContext);
-
+  const { addUserInfo } = useContext(userContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,13 +18,16 @@ const Login = ({ loginInfo }) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const { displayName, email } = user;
-        addUserInfo(displayName, email);
-        location.state.from && navigate(location.state.from);
+        if (user) {
+          const { displayName, email } = user;
+          addUserInfo(displayName, email);
+        }
+        if (location.state?.from) {
+          navigate(location.state.from);
+        }
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
         const errText = errorMessage.slice(22, -2);
         setHandleError({
           ...handleError,
@@ -47,12 +49,14 @@ const Login = ({ loginInfo }) => {
           type="email"
           placeholder="Email"
           {...register("email")}
+          onFocus={() => setHandleError({ ...handleError, errorMessage: "" })}
         />
         <input
           className="form-control form-control-md"
           type="password"
           placeholder="Password"
           {...register("password")}
+          onFocus={() => setHandleError({ ...handleError, errorMessage: "" })}
         />
         <input type="submit" className="btn btn-danger w-100 mt-4" />
       </form>

@@ -42,7 +42,7 @@
   margin: 0 auto !important;
 }
 
-.btn-text{
+.btn-text {
   text-align: left;
 }
 
@@ -62,15 +62,22 @@
 
 /*======sing up btn======*/
 
-.signup_btn:hover{
+.signup_btn:hover {
   border: 2px solid #dc3545;
 }
-.signup_btn:focus{
+.signup_btn:focus {
   box-shadow: none;
 }
 .signup_btn:active {
   background: #dc35463f;
   border: 2px solid #dc3545;
+}
+@media screen and (max-width: 992px) {
+  .form_container_section {
+    padding: 100px 0;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -81,7 +88,7 @@
   .google-btn {
     width: 60%;
   }
-  .facebook_btn{
+  .facebook_btn {
     margin-top: 20px;
   }
 }

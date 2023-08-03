@@ -11,6 +11,9 @@ const Food = ({ dynamicCat }) => {
   const [activeButton, setActiveButton] = useState("");
   const { cart } = useContext(CartContext);
 
+console.log(cart);
+
+
   const getCategory = (data, property) => {
     let catValue = data.map((cat) => cat[property]);
     catValue = [...new Set(catValue)];
@@ -79,12 +82,12 @@ const Food = ({ dynamicCat }) => {
             ))}
         </div>
         <div className="cart_btn_container mt-5 text-uppercase d-flex justify-content-center">
-          {cart.lenght ? (
-            <button className="px-5 mt-4 fw-normal btn btn-danger">
+          {cart.length === 0 ? (
+            <button className="px-5 mt-4 fw-normal btn-secondary btn ">
               Checkout Your Food
             </button>
           ) : (
-            <button className="px-5 mt-4 fw-normal btn-secondary btn ">
+            <button className="px-5 mt-4 fw-normal btn btn-danger">
               Checkout Your Food
             </button>
           )}

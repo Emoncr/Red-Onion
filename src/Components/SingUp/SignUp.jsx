@@ -49,6 +49,7 @@ const SignUp = ({ singUpInfo }) => {
           type="text"
           placeholder="Your Name"
           {...register("name")}
+          onFocus={()=>setHandleError({ ...handleError, errorMessage: "" })}
         />
 
         <input
@@ -56,12 +57,14 @@ const SignUp = ({ singUpInfo }) => {
           type="email"
           placeholder="Email"
           {...register("email")}
+          onFocus={()=>setHandleError({ ...handleError, errorMessage: "" })}
         />
         <input
           className="form-control form-control-md"
           type="password"
           placeholder="Password"
           {...register("password")}
+          onFocus={()=>setHandleError({ ...handleError, errorMessage: "" })}
         />
         <input type="submit" className="btn btn-danger w-100 mt-4" />
       </form>

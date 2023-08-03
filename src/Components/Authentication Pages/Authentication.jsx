@@ -7,9 +7,16 @@ import googleLogo from "../../images/Google__G__Logo.svg";
 import facebookLogo from "../../images/facebokLogo.png";
 import SignUp from "../SingUp/SignUp";
 import Login from "../Login/Login";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { userContext } from "../../Contexts/appUserContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  FacebookAuthProvider,
+} from "firebase/auth";
+
+
 
 //========Initialize Firebase App=========//
 const app = initializeApp(firebaseConfig);
@@ -51,6 +58,31 @@ const Authentication = () => {
       });
   };
 
+  const handleFacebookSignIn = () => {
+    const facebookProvider = new FacebookAuthProvider();
+
+    const auth = getAuth();
+    signInWithPopup(auth, facebookProvider)
+      .then((result) => {
+        const user = result.user;
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+        console.log(user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log(errorMessage);
+      });
+  };
+
   return (
     <section className="form_container_section">
       {/* ===========Login Form Part ============== */}
@@ -71,7 +103,6 @@ const Authentication = () => {
             }}
           />
         )}
-
         <>
           {/* Error/ message contaienr section  */}
           <div className="Error_messageContainer">
@@ -103,7 +134,10 @@ const Authentication = () => {
                 </div>
               </div>
             </button>
-            <button className="google-btn facebook_btn">
+            <button
+              onClick={handleFacebookSignIn}
+              className="google-btn facebook_btn"
+            >
               <div className="google-icon-wrapper">
                 <div className="image_container ">
                   <img className="google-icon img-fluid" src={facebookLogo} />

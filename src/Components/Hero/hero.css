@@ -16,3 +16,9 @@
     width: 40%;
     margin: 0 auto;
 }
+@media (max-width:600px){
+    .bg{
+        padding: 100px 0;
+
+    }
+}

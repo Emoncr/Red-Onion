@@ -3,12 +3,14 @@ import "./cart_details.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
 import { CartContext } from "../../Contexts/cartContext";
-import Pricing from "../Calculate Pricing/Pricing";
+import { useNavigate } from "react-router-dom";
 
 const CartDetails = ({ cartItem }) => {
   const { photo_url, food_id, food_name, price, quantity } = cartItem;
 
-  const { increaseQuantity, decreaseQuantity, removeItem } = useContext(CartContext);
+  const { increaseQuantity, decreaseQuantity, removeItem } =
+    useContext(CartContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -19,10 +21,13 @@ const CartDetails = ({ cartItem }) => {
               className=" cart_item_image"
               src={photo_url}
               alt="Food Image"
+              onClick={() => navigate(`../${food_id}`, { replace: true })}
             />
           </div>
           <div className="cart_item_content">
-            <h6>{food_name}</h6>
+            <h6 onClick={() => navigate(`../${food_id}`, { replace: true })}>
+              {food_name}
+            </h6>
             <p className="price">${price}</p>
           </div>
           <div className="cart_item_count">
@@ -55,7 +60,12 @@ const CartDetails = ({ cartItem }) => {
           </div>
         </div>
         <div className="remove_btn_container">
-          <button onClick={()=>removeItem(food_id)} className="remove_btn btn btn-danger"><FontAwesomeIcon icon={faClose} /></button>
+          <button
+            onClick={() => removeItem(food_id)}
+            className="remove_btn btn btn-danger"
+          >
+            <FontAwesomeIcon icon={faClose} />
+          </button>
         </div>
       </div>
     </>

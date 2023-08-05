@@ -4,10 +4,9 @@ import { CartContext } from "../../Contexts/cartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
-
+import { BsFillCartXFill, BsFillCartPlusFill } from "react-icons/bs";
 const Pricing = ({ isAddressProvided }) => {
-  const { cart, tax, delivery } = useContext(CartContext);
+  const { cart, tax, delivery,clearCart } = useContext(CartContext);
 
   //CALCULATE PRICE OF FOOD ITEM===========//
   const subTotalPrice = cart.reduce((total, foodItem) => {
@@ -41,7 +40,7 @@ const Pricing = ({ isAddressProvided }) => {
         <div className="empty_cart_container">
           <p className=" empty_cart_msg"> Your cart is empty !!! &#128551;</p>
           <Link to={"/"} replace={true}>
-            <button className="btn btn-danger w-100 fs-4 fw-bold mt-3">
+            <button className="btn btn-danger w-100 fs-4 fw-bold mt-3 big_btn">
               Order Now
               <FontAwesomeIcon className="px-2" icon={faArrowAltCircleRight} />
             </button>
@@ -49,8 +48,24 @@ const Pricing = ({ isAddressProvided }) => {
         </div>
       ) : (
         <div className="content_container">
+          <div className="cart_bts_container d-flex align-items-center justify-content-between">
+            <div className="add_more_btn">
+              <Link to={'../home'} >
+                <button className="btn btn-danger">
+                  Add More
+                  <BsFillCartPlusFill className="fs-5 mb-1" />
+                </button>
+              </Link>
+            </div>
+            <div className="clear_cart_btn">
+              <button onClick={clearCart}  className="btn btn-dark ">
+                Clear Cart
+                <BsFillCartXFill className="fs-5 mb-1" />
+              </button>
+            </div>
+          </div>
           {/* SUB TOTAL SECTION CODE  */}
-          <div className="amount_container">
+          <div className="amount_container mt-4">
             <div className="pricing_name fw-normal pricing">
               <p>
                 Sub Total *
@@ -109,7 +124,7 @@ const Pricing = ({ isAddressProvided }) => {
                 </p>
 
                 <Link to={"/order_confirm"} replace={true}>
-                  <button className="btn btn-danger w-100 fs-4 fw-bold mt-3">
+                  <button className="btn btn-danger w-100 fs-4 fw-bold mt-3 big_btn">
                     Place Order
                     <FontAwesomeIcon
                       className="px-2"
@@ -125,7 +140,7 @@ const Pricing = ({ isAddressProvided }) => {
                 </p>
                 <button
                   disabled
-                  className="btn btn-secondary w-100 fs-4 fw-bold mt-3"
+                  className="btn btn-secondary w-100 fs-4 fw-bold mt-3 big_btn"
                 >
                   Place Order
                   <FontAwesomeIcon

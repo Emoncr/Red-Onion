@@ -17,7 +17,7 @@ export const cartReducer = (state, action) => {
   switch (action.type) {
     //=======HANDLE ADD TO CART FUNCTIONALITY==========//
     case "ADD_TO_CART":
-      const { food, quantity, setQuantity } = action.payload;
+      const { food, quantity } = action.payload;
       const updateQuantityItem = { ...food, quantity };
       const cartAry = state.cart;
       const isItemExist = cartAry.find((item) => item.food_id === food.food_id);
@@ -33,7 +33,8 @@ export const cartReducer = (state, action) => {
           }
         });
         return { ...state, cart: updateItemQuantity };
-      } else {
+      } 
+      else {
         const cartItem = [...cartAry, updateQuantityItem];
         return { ...state, cart: cartItem };
       }
@@ -74,10 +75,10 @@ export const cartReducer = (state, action) => {
       const mainCart = state.cart;
       const removeItem = mainCart.filter((item) => item.food_id != itemId);
       return { ...state, cart: removeItem };
- 
+
     case "CLAER_CART":
-      return {...state, cart:[]}
-    
+      return { ...state, cart: [] };
+
     default:
       return state;
   }

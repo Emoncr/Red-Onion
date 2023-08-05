@@ -1,4 +1,9 @@
 input:focus{
     box-shadow: 0 0 0 0.25rem rgba(253, 13, 13, 0.25) !important;
 }
-
+.btn{
+    font-weight: 400 !important;
+}
+.btn.big_btn{
+    font-weight: 700 !important;
+}

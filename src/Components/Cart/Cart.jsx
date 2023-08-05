@@ -130,8 +130,10 @@ const Cart = () => {
                     ))}
                 </div>
               </div>
+
+              {/* //========Pricing sections Here===========// */}
               <div className="pricing_section">
-                <div className="pricing_container mt-5">
+                <div className="pricing_container mt-3">
                   {<Pricing isAddressProvided={isAddressProvided} />}
                 </div>
               </div>

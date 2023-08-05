@@ -3,7 +3,8 @@ import "./order_ confirm.css";
 import mapImage from "../../images/8 ordercomplete.png";
 import cartoonImage from "../../images/Group 1151.png";
 import userImage from "../../images/Group 1152.png";
-import { userContext } from "../../Contexts/appUserContext";
+import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const OrderConfirm = () => {
   let deliveryLocation;
@@ -76,6 +77,11 @@ const OrderConfirm = () => {
                   <button className="btn btn-danger w-100 fs-5 fw-bold">
                     Contact
                   </button>
+                  <Link to={'../'}>
+                    <button className="btn btn-warning w-100 fs-5 fw-bold mt-2">
+                    Continue Ordering <AiOutlineArrowRight className="mb-1 fs-5" />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

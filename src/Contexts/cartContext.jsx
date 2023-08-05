@@ -1,4 +1,4 @@
-import { createContext, useEffect, useLayoutEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { cartReducer, initialState } from "../reducers/cartReducer";
 
 export const CartContext = createContext();
@@ -6,10 +6,10 @@ export const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  const addToCart = (food, quantity, setQuantity) => {
+  const addToCart = (food, quantity) => {
     dispatch({
       type: "ADD_TO_CART",
-      payload: { food, quantity, setQuantity },
+      payload: { food, quantity },
     });
   };
 
@@ -34,13 +34,11 @@ const CartContextProvider = ({ children }) => {
     });
   };
 
-  const clearCart=()=>{
+  const clearCart = () => {
     dispatch({
-      type: 'CLAER_CART'
-    })
-  }
-
-
+      type: "CLAER_CART",
+    });
+  };
 
   //========SET CART ITEM TO LOCAL STORAGE=======//
   const setLocalStorageItem = (keyName, value) => {
@@ -60,7 +58,7 @@ const CartContextProvider = ({ children }) => {
         setLocalStorageItem,
         decreaseQuantity,
         removeItem,
-        clearCart
+        clearCart,
       }}
     >
       {children}

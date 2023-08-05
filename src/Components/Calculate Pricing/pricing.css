@@ -1,5 +1,5 @@
 .content_container{
-    max-width: 400px;
+    max-width: 420px;
 }
 .amount_container{
     display: flex;
@@ -38,7 +38,10 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.cart_bts_container{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 @media only screen and (max-width: 600px) {
     .content_container{
        margin: 0 auto;

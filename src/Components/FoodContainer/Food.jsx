@@ -50,7 +50,7 @@ const Food = ({ dynamicCat }) => {
   };
 
   return (
-    <section className="food_section pt-5 pb-5">
+    <section className="food_section pt-5 pb-5" id="food_section">
       <div className="inner-section categori_inner">
         <div className="row mx-auto categori-row">
           {categoris &&

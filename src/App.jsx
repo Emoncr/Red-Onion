@@ -9,7 +9,6 @@ import Authentication from "./Components/Authentication Pages/Authentication";
 import PrivateRoute from "./Components/Private Route/PrivateRoute";
 import Footer from "./Components/Footer/Footer";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +19,7 @@ function App() {
         <Route path=":id" element={<FoodDetails />} />
         <Route path="/login" element={<Authentication />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/order_confirm" element={<OrderConfirm />} />
         <Route
           path="/order_confirm"
           element={
@@ -29,7 +29,7 @@ function App() {
           }
         />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
